@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "rocket/example",
+  "title": "Example Module",
+  "category": "rocket",
+  "version": "1.0.0",
+  "description": "",
+  "textdomain": "rocket",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css",
+  "supports": {
+    "html": false
+  },
+  "render": "file:./render.php",
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  },
+  "example": {
+    "attributes": {
+      "title": "Title"
+    }
+  }
+}

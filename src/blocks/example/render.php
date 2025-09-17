@@ -1,0 +1,1 @@
+<?php render_rocket_block('example', $attributes); ?>

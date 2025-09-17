@@ -1,0 +1,38 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  NODE_ENV: production
+
+before_script:
+  - echo "Starting CI/CD Pipeline..."
+
+build_job:
+  stage: build
+  image: node:22
+  script:
+    - echo "Installing dependencies..."
+    - npm install
+    - echo "Building application..."
+    - npm run build
+  artifacts:
+    paths:
+      - theme/
+  only:
+    - main
+    - dev
+
+deploy_uat:
+  stage: deploy
+  trigger:
+    project: "datumhq-consulting-vn/management/common-services/datumhq-websites/wordpress-application"  # Replace with your actual target project path
+    branch: main  # Change if needed
+    strategy: depend  # Ensures the downstream pipeline depends on this one
+    forward:
+      artifacts: true  # This ensures artifacts (theme/) are available in the downstream pipeline
+      variables:
+        ARTIFACT_PATH: "theme/"
+  only:
+    - main
+    - dev

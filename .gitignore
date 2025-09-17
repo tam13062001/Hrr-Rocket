@@ -1,0 +1,16 @@
+*.iml
+.idea
+.vscode
+.DS_Store
+node_modules
+.env*
+!.env.example
+wordpress
+
+theme/build
+theme/styles
+!theme/.gitkeep
+plugin/build
+child-*/build
+
+bin/*.zip
